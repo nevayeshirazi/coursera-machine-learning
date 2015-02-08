@@ -17,12 +17,20 @@ for iter = 1:num_iters
     %       of the cost function (computeCost) and gradient here.
     %
 
+    % Indices in MATLAB start from 1, get initial values from theta vector
+    theata0 = theta(1);
+    theata1 = theta(2);
+    
+    % Cost function
+    h = ((X * theta)-y)';
+    
+    % Calculate the new value for theta 0 and 1
+    theta0_new = theata0 - (alpha * (1 / m)) *  h * X(:, 1);
+    theta1_new = theata1 - (alpha * (1 / m)) *  h * X(:, 2);
 
-
-
-
-
-
+    % Update the original theta vector
+    theta = [theta0_new; theta1_new];
+        
     % ============================================================
 
     % Save the cost J in every iteration    
